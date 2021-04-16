@@ -1,0 +1,120 @@
+<html>
+  
+
+  <head>
+
+        <meta name = "viewport" content="width=device-width">
+        <title>Clicker Game</title>
+        <style>
+
+
+            body {
+                background-color: aqua;
+                text-align: center;
+            }
+
+            h1 {
+                color: red;
+                font-size: 3.0em;
+            }
+            h2 {
+                color: darkblue;
+            }
+            h3 {
+                color: darkblue;
+                font-size: 25;
+            }
+
+            p {
+                color: darkblue;
+                font-size: 1.2em;
+            }
+            img.buttons {
+                border: 3px solid red;
+                border-radius: 14px;
+                padding: 10px;
+            }
+
+            img.buttons:hover {
+                border: 3px solid darkblue;
+                border-radius: 14px;
+                padding: 10px;
+            }
+
+
+        </style>
+  </head>
+  
+  <body>
+
+    <iframe src="https://www.youtube.com/embed/7DyNYa2uocA"  width="350px" height="250px" style="position:absolute;right:100px;top:200px;" class="video" ></iframe>
+    <p style="position:absolute;right:175px;top:150px">Eppic krunker gameplay.</p>
+    
+    <iframe src="https://www.youtube.com/embed/g33W_U73Bhs"  width="350px" height="250px" style="position:absolute;left:100px;top:200px" class="video"></iframe>
+    <p style="position:absolute;left:100px;top:150px">Vibing in the 20s BUT IT'S 1 HOUR LONG!!</p>
+    <h1>Welcome to the clicker game!!</h1>
+    
+    <p>Click the cookie to get a higher score!</p>
+
+    <p id="ScoreText">Cookies: 0</p>
+    
+    <img src="https://cdn.pixabay.com/photo/2014/04/02/17/06/cookie-307960_960_720.png" alt="koekje" width="200px" id="score" class="buttons" >
+
+    <h2>Store</h2>
+
+    <p id="prijs_clicks">Clicker: 10 cookies</p>
+    <img src="https://cdn.pixabay.com/photo/2012/04/01/12/39/cursor-23231_960_720.png" alt="clicker" width="50px" id="buy" class="buttons"> 
+    <p id="clicker">x1</p>
+
+    <p id="prijs_autoclicks">Auto clicker: 1000 cookies</p>
+    <img src="https://cdn.pixabay.com/photo/2013/07/12/19/17/cursor-154478_960_720.png" alt="Auto-clicker" width="55px" id="Auto-clicker" class="buttons">
+    <p id="auto-clicker-text">x0</p>
+
+    <p style="position:absolute;left:10px;top:1270px">vibing in the 20s made by: Evan King. </p>
+
+    <script>
+
+        let score = 0;
+        let clickers = 1;
+        let auto_clicker = 0;
+        let prijs_clicker = 10;
+        let prijs_autoclicker = 1000;
+
+        document.getElementById("score").addEventListener("click", function (){
+            score = score + clickers;
+            document.getElementById("ScoreText").innerText = "Cookies: " + score;
+        });
+
+        document.getElementById("buy").addEventListener("click", function() {
+            if (score >= prijs_clicker){
+            clickers = clickers + 1;
+            score = score - prijs_clicker;
+            prijs_clicker = prijs_clicker * 1.5;
+            prijs_clicker = Math.round(prijs_clicker)
+            document.getElementById("clicker").innerText = "x" + clickers;
+            document.getElementById("ScoreText").innerText = "Cookies: " + score;
+            document.getElementById("prijs_clicks").innerText = "Clicker: " + prijs_clicker + " cookies"; 
+            }    
+        });
+
+        document.getElementById("Auto-clicker").addEventListener("click", function () {
+            if (score >= prijs_autoclicker) {
+                auto_clicker = auto_clicker + 1;
+                score = score - prijs_autoclicker;
+                prijs_autoclicker = prijs_autoclicker * 2;
+                prijs_autoclicker = Math.round(prijs_autoclicker)
+                document.getElementById("ScoreText").innerText = "Cookies: " + score;
+                document.getElementById("auto-clicker-text").innerText = "x" + auto_clicker;
+                document.getElementById("prijs_autoclicks").innerText = "Auto clicker: " + prijs_autoclicker + " cookies"; 
+                setInterval(function() {
+                    score = score + clickers;
+                    document.getElementById("ScoreText").innerText = "Cookies: " + score;
+                }, 1000);
+            }
+        });
+
+    </script>
+    
+  </body>
+  
+</html>
